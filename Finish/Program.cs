@@ -6,7 +6,7 @@
  */
 
 Console.Clear();
-Console.WriteLine("  Задача");
+Console.WriteLine("  Задача: 1-ая Четверть");
 Console.WriteLine("  Ввод с клавиатуры строкового массива:");
 
 
@@ -34,7 +34,7 @@ void Print1Darr0(string[] arr)
 }
 
 // Метод печати одноменрного массива:
-void Print1Darr1(string[] arr)
+void Print1Darr2(string[] arr)
 {
     Console.Write("[");
     for (int i = 0; i < arr.Length - 1; i++)
@@ -46,41 +46,6 @@ void Print1Darr1(string[] arr)
     Console.ResetColor();
     Console.WriteLine("]");
 }
-
-
-
-// // Метод генерации строкового массива:
-// void StrArr(int n)
-// {
-//     //string[] s = new string[5];
-//     string[] arr0; // ссылка на массив строк
-//     int count; // текущее количество строк в массиве
-//     string? str;
-
-//     //int n;
-//     // Console.WriteLine("Введите кол-во строк :");
-//     // n = int.Parse(Console.ReadLine());
-//     for (int i = 0; i < n; i++)
-//     {
-//         s[i] = Console.ReadLine();
-//     }
-//     Console.WriteLine("Результирующий массив: ");
-//     for (int i = 0; i < n; i++)
-//     {
-//         Console.Write(s[i] + ", ");
-//     }
-//     Console.ReadLine();
-//     // Console.ReadKey();
-// }
-// // }
-
-
-
-// int N = ReadData("Введите количество элементов в строковом массиве: ");
-// StrArr(N);
-
-
-
 
 
 // Ввод строк с клавиатуры и образование нового массива:
@@ -119,10 +84,45 @@ do
 
 
 
+
+// // Метод копирования массива:
+// string[] Copy1Darr(string[] arr)
+// {
+//     string[] res = new string[arr.Length];
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         res[i] = arr[i];
+//     }
+//     return res;
+// }
+
+string[] Copy1Darr(string[] arr)
+{
+string[] arr2 = new string[arr0.Length];
+for (int i = 0; i < arr0.Length; i++)
+{
+    str = arr0[i];
+    if (str.Length <= 3)
+    {
+        arr2[i] = arr0[i];
+    }
+    else
+    {
+        arr2[i] = " ";
+    }
+
+}
+return arr2;
+}
+
+
 Console.WriteLine("  Исходный массив:");
 Print1Darr0(arr0);
 Console.WriteLine("\n  Результирующий массив:");
-Print1Darr1(arr0);
+//Print1Darr1(arr0);
+
+string[] arr2 = Copy1Darr(arr0); // создание копии исходного массива
+Print1Darr2(arr2);
 
 
 
