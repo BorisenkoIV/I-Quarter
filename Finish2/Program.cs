@@ -1,14 +1,14 @@
-﻿/* Задача: 1-ая Четверть
+﻿/*  Задача: 1-ая Четверть
  Написать программу, которая из имеющегося массива строк формирует новый массив из строк,
  длина которых меньше, либо равна 3 символам. Первоначальный массив можно ввести с клавиатуры,
  либо задать на старте выполнения алгоритма.
  При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
- */
+*/
 
 Console.Clear();
 Console.WriteLine("  Задача: 1-ая Четверть");
-Console.WriteLine("  Ввод с клавиатуры строкового массива:");
-
+Console.WriteLine("Ввод с клавиатуры строкового массива.");
+Console.WriteLine("Вывод в консоль нового массива с длиной строк меньше четырех:");
 
 // // Метод чтения даных с консоли:
 // int ReadData(string line)
@@ -34,7 +34,7 @@ void Print1Darr0(string[] arr)
 }
 
 // Метод печати одноменрного массива:
-void Print1Darr2(string[] arr)
+void Print1Darr1(string[] arr)
 {
     Console.Write("[");
     for (int i = 0; i < arr.Length - 1; i++)
@@ -55,14 +55,13 @@ string? str;
 string[] arr1; // дополнительная переменная-ссылка - сохраняет старый массив строк
 
 // Цикл ввода строк
-Console.WriteLine("Введите исходные строки:");
-
+Console.WriteLine("  Введите исходные строки:");
 count = 0; // обнулить количество строк
 arr0 = new string[count]; // выделить память для 0 строк
-
+Console.ForegroundColor = ConsoleColor.Green;
 do
 {
-    str = Console.ReadLine(); // Ввести строку
+    str = Console.ReadLine(); // ввести строку
 
     if (str != "")  // проверка, пустая ли строка
     {
@@ -78,95 +77,66 @@ do
         // добавить последнюю введенную строку в массив arr1
         arr1[count - 1] = str;
 
-        arr0 = arr1; // перенаправить ссылку arr0 на arr1
+        arr0 = arr1; // перенаправить ссылку arr1 на arr0
     }
-} while (str != "");
-
-
-
-
-// // Метод копирования массива:
-// string[] Copy1Darr(string[] arr)
-// {
-//     string[] res = new string[arr.Length];
-//     for (int i = 0; i < arr.Length; i++)
-//     {
-//         res[i] = arr[i];
-//     }
-//     return res;
-// }
-
-string[] Copy1Darr(string[] arr)
-{
-string[] arr2 = new string[arr0.Length];
-for (int i = 0; i < arr0.Length; i++)
-{
-    str = arr0[i];
-    if (str.Length <= 3)
-    {
-        arr2[i] = arr0[i];
-    }
-    else
-    {
-        arr2[i] = " ";
-    }
-
 }
-return arr2;
+while (str != "");
+Console.ResetColor();
+
+// Метод очистки строк длинной больше 4х символов:
+string[] Resul1Darr(string[] arr)
+{
+    //int ind=0;
+    string[] arr2 = new string[arr0.Length];
+    for (int i = 0; i < arr0.Length; i++)
+    {
+        str = arr0[i];
+        if (str.Length <= 3)
+        {
+            arr2[i] = arr0[i];
+        }
+        // else
+        // {
+        //     //ind=i;
+        //     //string [] myArray=arr2[i];
+        //   // RemoveAt(ref arr2, i);
+        //     //arr2[i] = " ";
+        // }
+
+    }
+    return arr2;
 }
 
+// Метод удаления элемента массива по индексу:
+void RemoveArrInd(ref string[] arr, int index)
+{
+    string[] newArray = new string[arr.Length - 1];
+    for (int i = 0; i < index; i++)
+        newArray[i] = arr[i];
+    for (int i = index + 1; i < arr.Length; i++)
+    {
+        newArray[i - 1] = arr[i];
+    }
+    arr = newArray;
+}
+
+// Метод удаления пустых строк:
+string[] RemoveX(string[] arr)
+{
+    for (int i = 0; i < arr.Length - 1; i++)
+    {
+        str = arr[i];
+        if (str == null)
+            RemoveArrInd(ref arr, i);
+    }
+    return arr;
+}
 
 Console.WriteLine("  Исходный массив:");
 Print1Darr0(arr0);
-Console.WriteLine("\n  Результирующий массив:");
-//Print1Darr1(arr0);
 
-string[] arr2 = Copy1Darr(arr0); // создание копии исходного массива
-Print1Darr2(arr2);
+Console.WriteLine("  Результирующий массив:");
+string[] arr2 = Resul1Darr(arr0); // результирующий массив
 
-
-
-// // Метод генерации строкового массива:
-// void StrArr(int n)
-// {
-//   //     string[] s = new string[5];
-//     //int n;
-//     // Console.WriteLine("Введите кол-во строк :");
-//     // n = int.Parse(Console.ReadLine());
-//     for (int i = 0; i < n; i++)
-//     {
-//         s[i] = Console.ReadLine();
-//     }
-//     Console.WriteLine("Результирующий массив: ");
-//     for (int i = 0; i < n; i++)
-//     {
-//         Console.Write(s[i] + ", ");
-//     }
-//     Console.ReadLine();
-//     // Console.ReadKey();
-// }
-// // }
-
-// // int N = ReadData("Введите количество элементов в строковом массиве: ");
-// // StrArr(N);
-
-
-
-
-
-// string str = @"мама мыла раму";
-// char [] ar = str.ToCharArray();
-// Console.WriteLine(ar[1]);
-
-
-// string str = @"мас i сив";
-// char [] ar = new char [str.Length];
-// for(int i = 0; i < str.Length; i++)
-// {
-// ar[i] = str[i];
-// Console.WriteLine(ar[i]);
-// }
-
-
-// // Преобразовать массив в строку
-// string str = string.Join("\r\n", array);
+string[] arr = RemoveX(arr2);
+Print1Darr1(arr);
